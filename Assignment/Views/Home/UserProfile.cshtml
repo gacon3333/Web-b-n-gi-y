@@ -1,0 +1,427 @@
+﻿@model ClassLibrary1.Models.User
+
+
+@*<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>*@
+
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<style>
+    /*Thông tin cá nhân*/
+    body {
+        color: #797979;
+        background: #f1f2f7;
+        font-family: 'Open Sans', sans-serif;
+        padding: 0px !important;
+        margin: 0px !important;
+        font-size: 13px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-font-smoothing: antialiased;
+    }
+
+    
+
+    .r-activity {
+        margin: 6px 0 0;
+        font-size: 12px;
+    }
+
+
+    .p-text-area, .p-text-area:focus {
+        border: none;
+        font-weight: 300;
+        box-shadow: none;
+        color: #c3c3c3;
+        font-size: 16px;
+    }
+
+    .profile-info .panel-footer {
+        background-color: #f8f7f5;
+        border-top: 1px solid #e7ebee;
+    }
+
+        .profile-info .panel-footer ul li a {
+            color: #7a7a7a;
+        }
+
+    .bio-graph-heading {
+        background: #fbc02d;
+        color: #fff;
+        text-align: center;
+        font-style: italic;
+        padding: 40px 110px;
+        border-radius: 4px 4px 0 0;
+        -webkit-border-radius: 4px 4px 0 0;
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    .bio-graph-info {
+        color: #89817e;
+    }
+
+        .bio-graph-info h1 {
+            font-size: 22px;
+            font-weight: 300;
+            margin: 0 0 20px;
+        }
+
+    .bio-row {
+        width: 50%;
+        float: left;
+        margin-bottom: 10px;
+        padding: 0 15px;
+    }
+
+        .bio-row p span {
+            width: 100px;
+            display: inline-block;
+        }
+
+    .bio-chart, .bio-desk {
+        float: left;
+    }
+
+    .bio-chart {
+        width: 40%;
+    }
+
+    .bio-desk {
+        width: 60%;
+    }
+
+        .bio-desk h4 {
+            font-size: 15px;
+            font-weight: 400;
+        }
+
+            .bio-desk h4.terques {
+                color: #4CC5CD;
+            }
+
+            .bio-desk h4.red {
+                color: #e26b7f;
+            }
+
+            .bio-desk h4.green {
+                color: #97be4b;
+            }
+
+            .bio-desk h4.purple {
+                color: #caa3da;
+            }
+
+    .file-pos {
+        margin: 6px 0 10px 0;
+    }
+
+    .profile-activity h5 {
+        font-weight: 300;
+        margin-top: 0;
+        color: #c3c3c3;
+    }
+
+    .summary-head {
+        background: #ee7272;
+        color: #fff;
+        text-align: center;
+        border-bottom: 1px solid #ee7272;
+    }
+
+        .summary-head h4 {
+            font-weight: 300;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .summary-head p {
+            color: rgba(255,255,255,0.6);
+        }
+
+    ul.summary-list {
+        display: inline-block;
+        padding-left: 0;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+        ul.summary-list > li {
+            display: inline-block;
+            width: 19.5%;
+            text-align: center;
+        }
+
+            ul.summary-list > li > a > i {
+                display: block;
+                font-size: 18px;
+                padding-bottom: 5px;
+            }
+
+            ul.summary-list > li > a {
+                padding: 10px 0;
+                display: inline-block;
+                color: #818181;
+            }
+
+        ul.summary-list > li {
+            border-right: 1px solid #eaeaea;
+        }
+
+            ul.summary-list > li:last-child {
+                border-right: none;
+            }
+
+    .activity {
+        width: 100%;
+        float: left;
+        margin-bottom: 10px;
+    }
+
+        .activity.alt {
+            width: 100%;
+            float: right;
+            margin-bottom: 10px;
+        }
+
+        .activity span {
+            float: left;
+        }
+
+        .activity.alt span {
+            float: right;
+        }
+
+        .activity span, .activity.alt span {
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            border-radius: 50%;
+            -webkit-border-radius: 50%;
+            background: #eee;
+            text-align: center;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .activity.terques span {
+            background: #8dd7d6;
+        }
+
+        .activity.terques h4 {
+            color: #8dd7d6;
+        }
+
+        .activity.purple span {
+            background: #b984dc;
+        }
+
+        .activity.purple h4 {
+            color: #b984dc;
+        }
+
+        .activity.blue span {
+            background: #90b4e6;
+        }
+
+        .activity.blue h4 {
+            color: #90b4e6;
+        }
+
+        .activity.green span {
+            background: #aec785;
+        }
+
+        .activity.green h4 {
+            color: #aec785;
+        }
+
+        .activity h4 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        .activity p {
+            margin-bottom: 0;
+            font-size: 13px;
+        }
+
+        .activity .activity-desk i, .activity.alt .activity-desk i {
+            float: left;
+            font-size: 18px;
+            margin-right: 10px;
+            color: #bebebe;
+        }
+
+        .activity .activity-desk {
+            margin-left: 70px;
+            position: relative;
+        }
+
+        .activity.alt .activity-desk {
+            margin-right: 70px;
+            position: relative;
+        }
+
+            .activity.alt .activity-desk .panel {
+                float: right;
+                position: relative;
+            }
+
+    .activity-desk .panel {
+        background: #F4F4F4;
+        display: inline-block;
+    }
+
+
+    .activity .activity-desk .arrow {
+        border-right: 8px solid #F4F4F4 !important;
+    }
+
+    .activity .activity-desk .arrow {
+        border-bottom: 8px solid transparent;
+        border-top: 8px solid transparent;
+        display: block;
+        height: 0;
+        left: -7px;
+        position: absolute;
+        top: 13px;
+        width: 0;
+    }
+
+    .activity-desk .arrow-alt {
+        border-left: 8px solid #F4F4F4 !important;
+    }
+
+    .activity-desk .arrow-alt {
+        border-bottom: 8px solid transparent;
+        border-top: 8px solid transparent;
+        display: block;
+        height: 0;
+        right: -7px;
+        position: absolute;
+        top: 13px;
+        width: 0;
+    }
+
+    .activity-desk .album {
+        display: inline-block;
+        margin-top: 10px;
+    }
+
+        .activity-desk .album a {
+            margin-right: 10px;
+        }
+
+            .activity-desk .album a:last-child {
+                margin-right: 0px;
+            }
+
+</style>
+ /*Thông tin cá nhân*/
+<div class="container-xl px-4 mt-4">
+    <!-- Account page navigation-->
+    @* <nav class="nav nav-borders">
+    <a class="nav-link active ms-0" href="https://www.bootdey.com/snippets/view/bs5-edit-profile-account-details" target="__blank">Profile</a>
+    <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-billing-page" target="__blank">Billing</a>
+    <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-profile-security-page" target="__blank">Security</a>
+    <a class="nav-link" href="https://www.bootdey.com/snippets/view/bs5-edit-notifications-page" target="__blank">Notifications</a>
+    </nav>*@
+    @*  <hr class="mt-0 mb-4">*@
+    <div class="row">
+        <div class="col-xl-4 ">
+            <!-- Profile picture card-->
+            <div class="card mb-4 mb-xl-0">
+                <div class="card-header">Profile Picture</div>
+                <div class="card-body text-center">
+                    <!-- Profile picture image-->
+                    <img class="img-account-profile rounded-circle mb-2" src="http://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+                    <!-- Profile picture help block-->
+                    <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
+                    <!-- Profile picture upload button-->
+                    <button class="btn btn-primary" type="button">Upload new image</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8 ">
+            <!-- Account details card-->
+            <div class="card mb-4">
+                <div class="card-header">Account Details</div>
+                <div class="card-body">
+                    <form>
+                        <!-- Form Group (username)-->
+                        @*<div class="mb-3">
+                        <label class="small mb-1" for="inputUsername">Username (how your name will appear to other users on the site)</label>
+                        <input class="form-control" id="inputUsername" type="text" placeholder="Enter your username" value="username">
+                        </div>
+                        <div class="mb-3">
+                        <label class="small mb-1" for="inputUsername">Name</label>
+                        <input class="form-control" id="inputUsername" type="text" placeholder="Enter your name" value="username">
+                        </div>*@
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (first name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputFirstName">Username</label>
+                                <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your username" value="@Html.DisplayFor(model => model.TaiKhoan)">
+                            </div>
+                            <!-- Form Group (last name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLastName"> Name</label>
+                                <input class="form-control" id="inputLastName" type="text" placeholder="Enter your name" value=" @Html.DisplayFor(model => model.Ten)">
+                            </div>
+                        </div>
+                        <!-- Form Row        -->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (organization name)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputOrgName">Giới tính</label>
+                                <input class="form-control" id="inputOrgName" type="text" placeholder="Enter your giới tính" value=" @Html.DisplayFor(model => model.GioiTinh)">
+                            </div>
+                            <!-- Form Group (location)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputLocation">Location</label>
+                                <input class="form-control" id="inputLocation" type="text" placeholder="Enter your location" value=" @Html.DisplayFor(model => model.DiaChi)">
+                            </div>
+                        </div>
+                        <!-- Form Group (email address)-->
+                        <div class="mb-3">
+                            <label class="small mb-1" for="inputEmailAddress">Email address</label>
+                            <input class="form-control" id="inputEmailAddress" type="email" placeholder="Enter your email address" value=" @Html.DisplayFor(model => model.Email)">
+                        </div>
+                        <!-- Form Row-->
+                        <div class="row gx-3 mb-3">
+                            <!-- Form Group (phone number)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputPhone">Phone number</label>
+                                <input class="form-control" id="inputPhone" type="tel" placeholder="Enter your phone number" value=" @Html.DisplayFor(model => model.Sdt)">
+                            </div>
+                            <!-- Form Group (birthday)-->
+                            <div class="col-md-6">
+                                <label class="small mb-1" for="inputBirthday">Birthday</label>
+                                <input class="form-control" id="inputBirthday" type="text" name="birthday" placeholder="Enter your birthday" value=" @Html.DisplayFor(model => model.NgaySinh)">
+                            </div>
+                        </div>
+                        <!-- Save changes button-->
+
+                        <div style="height: 35px;"></div>
+                        <a href="@Url.Action("Edit", new { id = Model.Id })">
+                            <button class="btn btn-primary" type="button">Cập nhật</button>
+                        </a>
+                        
+                       
+                       
+                        @*<button class="btn btn-primary" type="button">Chỉnh sửa</button>*@
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div> <a class="nav-link" asp-area="" asp-controller="Home" asp-action="LogOut"><button class="btn btn-primary" type="button" style="width:1250px; background-color:aqua; color:black; margin-left:20px">Đăng xuất</button></a></div>

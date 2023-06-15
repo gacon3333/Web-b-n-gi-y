@@ -1,0 +1,70 @@
+﻿@model IEnumerable<ClassLibrary1.Models.HoaDon>
+<br />
+<br />
+<br />
+<br />
+<br />
+<p>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Ma)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NgayTao)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ma)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayTao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                
+                    @if (item.TrangThai == 1)
+                    {
+                        <span>Chua Thanh Toan</span>
+                    }
+                    @if (item.TrangThai == 2)
+                    {
+                        <span>Da Thanh Toan</span>
+                    }
+                </td>
+            <td>
+                    @Html.ActionLink("Edit", "UpdateHoaDon", new {  id=item.Id  }) |
+                    @Html.ActionLink("Details", "DetailsHoaDonChiTiets", new {  id=item.Id  }) |
+                    @Html.ActionLink("Delete", "DeleteHoaDon", new {  id=item.Id  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

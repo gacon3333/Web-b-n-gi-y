@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ClassLibrary1.Models.KichCo>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<p>
+    <a asp-action="AddKichCo">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Size)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Size)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                    @Html.ActionLink("Edit", "UpdateKickCo", new { id=item.Id}) |
+                    @Html.ActionLink("Details", "DetailsKickCo", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "DeleteKichCo", new { id=item.Id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

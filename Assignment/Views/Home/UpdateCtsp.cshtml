@@ -1,0 +1,122 @@
+﻿@model ClassLibrary1.Models.ChiTietSp
+
+@*@{
+    ViewData["Title"] = "UpdateCtsp";
+}
+*@<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h1>UpdateCtsp</h1>
+
+
+<hr />
+<div class="row">
+
+    <div class="col-md-4">
+        <form asp-action="UpdateCtsp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="Ten" class="control-label"></label>
+                <input asp-for="Ten" class="form-control" />
+                <span asp-validation-for="Ten" class="text-danger"></span>
+
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IdKichCo" class="control-label">Kích cỡ</label>
+                @Html.DropDownListFor(model => model.IdKichCo, (IEnumerable<SelectListItem>)ViewBag.KichCoList, new { @class = "form-control" })
+                <span asp-validation-for="IdKichCo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdKieuSp" class="control-label">Kiểu sản phẩm</label>
+                @Html.DropDownListFor(model => model.IdKieuSp, (IEnumerable<SelectListItem>)ViewBag.loaiSpList, new { @class = "form-control" })
+                <span asp-validation-for="IdKieuSp" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdMauSac" class="control-label">Màu sắc</label>
+                @Html.DropDownListFor(model => model.IdMauSac, (IEnumerable<SelectListItem>)ViewBag.MauSacList, new { @class = "form-control" })
+                <span asp-validation-for="IdMauSac" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="BaoHanh" class="control-label"></label>
+                <input asp-for="BaoHanh" class="form-control" />
+                <span asp-validation-for="BaoHanh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label"></label>
+                <input asp-for="MoTa" class="form-control" />
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SoLuongTon" class="control-label"></label>
+                <input asp-for="SoLuongTon" class="form-control" />
+                <span asp-validation-for="SoLuongTon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiaNhap" class="control-label"></label>
+                <input asp-for="GiaNhap" class="form-control" />
+                <span asp-validation-for="GiaNhap" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="GiaBan" class="control-label"></label>
+                <input asp-for="GiaBan" class="form-control" />
+                <span asp-validation-for="GiaBan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkAnh" class="control-label"></label>
+                <input asp-for="LinkAnh" class="form-control" />
+                <span asp-validation-for="LinkAnh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TrangThai" class="control-label"></label>
+                <input asp-for="TrangThai" class="form-control" />
+                <span asp-validation-for="TrangThai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input id="btnupd" type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+@if (TempData["AlertMessage"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            alert('@TempData["AlertMessage"]');
+        });
+    </script>
+}
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+@*@if (TempData["AlertMessage1"] != null)
+{
+    <script>
+        $(document).ready(function () {
+            $('form').submit(function (event) {
+                event.preventDefault();
+                alert('@TempData["AlertMessage1"]');
+               
+                $(this).off('submit').submit();
+                return false;
+            });
+        });
+    </script>
+}
+*@
+

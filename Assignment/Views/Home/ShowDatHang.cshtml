@@ -1,0 +1,344 @@
+﻿@model IEnumerable<ClassLibrary1.Models.GioHangChiTiet>
+@using ClassLibrary1.Models;
+@using Newtonsoft.Json;
+@{
+    CuaHangGiayDBContext shopDbContext = new CuaHangGiayDBContext();
+}
+@{
+    int soLuongSanPham = Model.Count();
+    var User = Model.FirstOrDefault();
+    var Name = shopDbContext.Users.FirstOrDefault(i => i.Id == @User.UserId).Ten;
+    var diachi = shopDbContext.Users.FirstOrDefault(i => i.Id == @User.UserId).DiaChi;
+    var sdt = shopDbContext.Users.FirstOrDefault(i => i.Id == @User.UserId).Sdt;
+    var email = shopDbContext.Users.FirstOrDefault(i => i.Id == @User.UserId).Email;
+    var gt = shopDbContext.Users.FirstOrDefault(i => i.Id == @User.UserId).GioiTinh;
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- Bootstrap CSS -->
+@*<link rel="stylesheet" href="../vendor/bootstrap/css/bootstrap.min.css" type="text/css">
+<!-- Font awesome -->
+<link rel="stylesheet" href="../vendor/font-awesome/css/font-awesome.min.css" type="text/css">
+*@
+
+<!-- Custom css - Các file css do chúng ta tự viết -->
+
+<body>
+    <main role="main">
+        <!-- Block content - Đục lỗ trên giao diện bố cục chung, đặt tên là `content` -->
+        <div class="container mt-4">
+            <form class="needs-validation" name="frmthanhtoan" method="post"
+                  action="#">
+                <input type="hidden" name="kh_tendangnhap" value="dnpcuong">
+
+                <div class="py-5 text-center">
+                    <i class="fa fa-credit-card fa-4x" aria-hidden="true"></i>
+                    <h2>Thanh toán</h2>
+                    <p class="lead">Vui lòng kiểm tra thông tin Khách hàng, thông tin Giỏ hàng trước khi Đặt hàng.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 order-md-2 mb-4">
+                        <h4 class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="text-muted">Giỏ hàng  </span>
+                            <span class="badge badge-secondary badge-pill">@soLuongSanPham</span>
+                        </h4>
+
+
+                        <ul class="list-group mb-3">
+                            @foreach (var item in Model)
+                            {
+                                var size = shopDbContext.KichCos.FirstOrDefault(i => i.Id == item.IdChiTietSpNavigation.IdKichCo).Size;
+                                var mausac = shopDbContext.MauSacs.FirstOrDefault(i => i.Id == item.IdChiTietSpNavigation.IdMauSac).Ten;
+                                var tota = @item.DonGia * @item.SoLuong;
+                                <input type="hidden" name="sanphamgiohang[1][sp_ma]" value="">
+                                <input type="hidden" name="sanphamgiohang[1][gia]" value="@item.DonGia">
+                                <input type="hidden" name="sanphamgiohang[1][soluong]" value="@item.SoLuong">
+
+                                <li class="list-group-item d-flex justify-content-between lh-condensed">
+                                    <div>
+                                        <h6 class="my-0">@Html.DisplayFor(modelItem => item.IdChiTietSpNavigation.Ten)</h6>
+                                        <small class="text-muted">Size: @size, </small>
+                                        <small class="text-muted">Color: @mausac, </small>
+                                        <small class="text-muted">Giá bán: @item.DonGia$ x </small>
+                                        <small class="text-muted">@item.SoLuong</small>
+                                    </div>
+
+                                    <span class="text-muted"><input type="number" class="form-control text-end" name="amt" value="@tota" disabled=""></span>
+                                </li>
+                            }
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span>Tổng thành tiền</span>
+                                <span> <input type="number" class="form-control text-end" id="FTotal" name="FTotal" disabled=""></span>
+
+
+                            </li>
+                        </ul>
+
+
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Mã khuyến mãi">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-secondary">Xác nhận</button>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8 order-md-1">
+                        <h4 class="mb-3">Thông tin khách hàng</h4>
+                        @if (User != null)
+                        {
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="kh_ten">Họ tên</label>
+                                    <input type="text" class="form-control" name="kh_ten" id="kh_ten"
+                                       value="@Name" required>
+                                </div>
+                                <div id="name-error" class="error-message" style="display: none; color: red;">Please fill out this field </div>
+
+                                <div class="col-md-12">
+                                    <label for="kh_dienthoai">Điện thoại</label>
+                                    <input type="text" class="form-control" name="kh_dienthoai" id="kh_dienthoai"
+                                       value="@sdt" required>
+                                </div>
+                                <div id="sdt-error" class="error-message" style="display: none; color: red;">Số điện thoại không hợp lệ </div>
+
+                                <div class="col-md-12">
+                                    <label for="kh_diachi">Địa chỉ</label>
+                                    <input type="text" class="form-control" name="kh_diachi" id="kh_diachi"
+                                       value="@diachi" required>
+                                </div>
+                                <div id="diachi-error" class="error-message" style="display: none; color: red;">Please fill out this field </div>
+                            </div>
+                        }
+                        <h4 class="mb-3">Hình thức thanh toán</h4>
+                        <div class="d-block my-3">
+                            <div class="custom-control custom-radio">
+                                <input id="httt-1" name="httt_ma" type="radio" class="custom-control-input" required=""
+                                       value="1">
+                                <label class="custom-control-label" for="httt-1">Thanh toán sau khi nhận hàng</label>
+                            </div>
+                            <div class="custom-control custom-radio">
+                                <input id="httt-2" name="httt_ma" type="radio" class="custom-control-input" required=""
+                                       value="2">
+                                <label class="custom-control-label" for="httt-2">Thẻ tín dụng/Ghi nợ</label>
+                            </div>
+                            <div id="payment-error" style="display: none; color: red;">Vui lòng chọn phương thức thanh toán</div>
+
+
+                            @*<div class="custom-control custom-radio">
+                            <input id="httt-3" name="httt_ma" type="radio" class="custom-control-input" required=""
+                            value="3">
+                            <label class="custom-control-label" for="httt-3">Ship COD</label>
+                            </div>*@
+                        </div>
+                        <hr class="mb-4">
+                        <div class="d-flex justify-content-between">
+                            <div class="d-flex justify-content-start">
+                                <button type="submit" class="btn btn-light btn-lg me-2" style="background-color:coral">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
+                                        Continue shopping
+                                    </a>
+                                </button>
+                            </div>
+
+                            <div class="d-flex justify-content-end">
+
+                                <button class="add-to-cart btn btn-default" type="button" onclick="addToCart('@Url.Action("AddHoaDon")')">Đặt hàng</button>
+
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- End block content -->
+    </main>
+    @* <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/popperjs/popper.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>*@
+
+    <!-- Custom script - Các file js do mình tự viết -->
+
+</body>
+
+<script>
+    //function addToCart(url) {
+    //    var paymentMethod = document.querySelector('input[name="httt_ma"]:checked').value;
+    //    url = url + "?status=" + paymentMethod;
+    //    window.location.href = url;
+    //}
+
+
+    //    function addToCart(url) {
+    //    var paymentMethod = document.querySelector('input[name="httt_ma"]:checked');
+    //    if (paymentMethod) {
+    //        var paymentMethodValue = paymentMethod.value;
+    //        url = url + "?status=" + paymentMethodValue;
+    //        window.location.href = url;
+    //        document.getElementById("quantity-error").classList.add("d-none"); // thêm class 'd-none' để ẩn thông báo
+    //    }
+    //    else {
+    //        document.getElementById("quantity-error").classList.remove("d-none"); // loại bỏ class 'd-none' để hiển thị thông báo
+    //    }
+    //}
+    //function addToCart(url) {
+    //    var paymentMethod = document.querySelector('input[name="httt_ma"]:checked');
+    //    if (paymentMethod) {
+    //        var paymentMethodValue = paymentMethod.value;
+    //        url = url + "?status=" + paymentMethodValue;
+    //        window.location.href = url;
+    //        document.getElementById("payment-method-error").style.display = "none"; // ẩn thông báo bằng cách thiết lập display = "none"
+    //    }
+    //    else {
+    //        document.getElementById("payment-method-error").style.display = "block"; // hiển thị thông báo bằng cách thiết lập display = "block"
+    //    }
+    //}
+    // Lắng nghe sự kiện "change" của các radiobutton
+    var paymentMethodElements = document.getElementsByName("httt_ma");
+    for (var i = 0; i < paymentMethodElements.length; i++) {
+        paymentMethodElements[i].addEventListener("change", function () {
+            // Kiểm tra nếu có bất kỳ radiobutton nào được chọn thì ẩn thông báo
+            if (document.querySelector('input[name="httt_ma"]:checked')) {
+                document.getElementById("payment-error").style.display = "none";
+            }
+        });
+    }
+    //  Lắng nghe sự kiện "input" của trường input
+    var inputElement = document.getElementById("kh_dienthoai");
+    inputElement.addEventListener("input", function () {
+        var input = document.querySelector('#kh_dienthoai');
+        var error = document.querySelector('#sdt-error');
+        if (input.value !== '') {
+            // Nếu trường input không rỗng, ẩn thông báo lỗi
+            error.style.display = 'none';
+        }
+    });
+    var inputElement = document.getElementById("kh_diachi");
+    inputElement.addEventListener("input", function () {
+        var input = document.querySelector('#kh_diachi');
+        var error = document.querySelector('#diachi-error');
+        if (input.value !== '') {
+            // Nếu trường input không rỗng, ẩn thông báo lỗi
+            error.style.display = 'none';
+        }
+    });
+    var inputElement = document.getElementById("kh_ten");
+    inputElement.addEventListener("input", function () {
+        var input = document.querySelector('#kh_ten');
+        var error = document.querySelector('#name-error');
+        if (input.value !== '') {
+            // Nếu trường input không rỗng, ẩn thông báo lỗi
+            error.style.display = 'none';
+        }
+    });
+
+
+    // Xử lý khi nhấn button
+    //function addToCart(url) {
+    //    var paymentMethod = document.querySelector('input[name="httt_ma"]:checked');
+    //    var input = document.querySelector('kh_dienthoai');
+    //    var error = document.querySelector('sdt-error');
+    //    if (input.value === '') {
+    //        // Nếu trường input rỗng, hiển thị thông báo lỗi
+    //        error.style.display = 'block';
+    //    } else {
+    //        // Nếu trường input không rỗng, ẩn thông báo lỗi
+    //        error.style.display = 'none';
+    //    }
+    //    if (paymentMethod) {
+    //        var paymentMethodValue = paymentMethod.value;
+    //        url = url + "?status=" + paymentMethodValue;
+    //        window.location.href = url;
+    //    }
+    //    else {
+    //        // Hiển thị thông báo khi không có radiobutton nào được chọn
+    //        document.getElementById("payment-error").style.display = "block";
+    //    }
+    //}
+    function addToCart(url) {
+
+        var paymentMethod = document.querySelector('input[name="httt_ma"]:checked');
+        var input1 = document.getElementById('kh_dienthoai');
+        var error1 = document.getElementById('sdt-error');
+        var input2 = document.getElementById('kh_ten');
+        var error2 = document.getElementById('name-error');
+        var input3 = document.getElementById('kh_diachi');
+        var error3 = document.getElementById('diachi-error');
+        // Kiểm tra số điện thoại
+        var phoneNumber = input1.value;
+        var phoneRegex = /^\d{10}$/; // Định dạng số điện thoại: 10 chữ số
+        var isValidPhoneNumber = phoneRegex.test(phoneNumber);
+
+
+        if (!input2.value) {
+
+            error2.style.display = 'block';
+            return;
+        }
+        else {
+            error2.style.display = 'none';
+
+        }
+
+        if (!isValidPhoneNumber) {
+            // Nếu số điện thoại không hợp lệ, hiển thị thông báo lỗi và dừng thực hiện tiếp
+            error1.style.display = 'block';
+            return;
+        } else {
+            // Nếu số điện thoại hợp lệ, ẩn thông báo lỗi
+            error1.style.display = 'none';
+
+        }
+        if (!input3.value) {
+            error3.style.display = 'block';
+            return;
+        }
+        else {
+            error3.style.display = 'none';
+
+        }
+        // Kiểm tra phương thức thanh toán
+        if (paymentMethod) {
+            if (paymentMethod && input1.value && input2.value && input3.value) {
+                var paymentMethodValue4 = input3.value;
+                var paymentMethodValue1 = input2.value;
+                var paymentMethodValue3 = input1.value;
+                var paymentMethodValue = paymentMethod.value;
+                url = url + "?diachi=" + paymentMethodValue4 + "&ten=" + paymentMethodValue1 + "&sdt=" + paymentMethodValue3 + "&status=" + paymentMethodValue;
+                window.location.href = url;
+            }
+
+
+        } else {
+            // Hiển thị thông báo khi không có radiobutton nào được chọn
+            document.getElementById("payment-error").style.display = "block";
+        }
+
+
+    }
+
+    function GetTotal() {
+
+        var sum = 0;
+        var amts = document.getElementsByName("amt");
+
+        for (let index = 0; index < amts.length; index++) {
+            var amt = amts[index].value;
+            sum = +(sum) + +(amt);
+        }
+        document.getElementById("FTotal").value = sum;
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+        GetTotal(); // Thay đổi giá trị tổng tự động
+    });
+
+</script>
+

@@ -1,0 +1,268 @@
+﻿@using ClassLibrary1.Models;
+@using Newtonsoft.Json;
+@{
+    CuaHangGiayDBContext shopDbContext = new CuaHangGiayDBContext();
+}
+
+@{
+    var session = Context.Request.HttpContext.Session;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Assignment</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Assignment.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    @*  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>*@
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</head>
+<body>
+    <header style="  position: fixed; width: 100%;z-index: 9999;">
+        <!-- top navbar -->
+        <div class="top-navbar">
+            @if (session.GetString("User") == null)
+            {
+                <div class="top-icons">
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="other-links">
+
+                    <button id="btn-login"><a asp-area="" asp-controller="Home" asp-action="Login">Login</a></button>
+                    <button id="btn-signup"><a asp-area="" asp-controller="Home" asp-action="AddUser">Signup</a></button>
+
+                    <i class="fa-solid fa-user" disabled style="display:none"></i>
+                    <i class="fa-solid fa-cart-shopping" disabled style="display:none"> </i>
+                </div>
+            }
+            else
+            {
+                <div class="top-icons">
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div class="other-links">
+
+                    <button id="btn-login" disabled style="display:none"><a asp-area="" asp-controller="Home" asp-action="Login">Login</a></button>
+                    <button id="btn-signup" disabled style="display:none"><a asp-area="" asp-controller="Home" asp-action="AddUser">Signup</a></button>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="UserProfile" style="display: inline-block;">
+                        <i class="fa-solid fa-user">
+                        </i>
+                    </a>
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ShowCartsss" style="display: inline-block;">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                    </a>
+                </div>
+            }
+
+        </div>
+        <!-- top navbar -->
+        <!-- navbar -->
+        <nav class="navbar navbar-expand-lg" id="navbar">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+
+                    <img src="https://lh3.googleusercontent.com/pw/AMWts8BzzzxbgapnrccaB20VMRo3Xiryqa2jVmeL9YndvC4-_ms8hvbegzcyniLhg62pMRGRTYGgGUr-OenG9yJN-EKnRiX6EFu2EH0oujZ0vhu_QkU51zkHlYQ85mF8az0Tm6fCCRqQ93-6hranjdSfFzQE=w500-h500-s-no?authuser=0" alt="" height="55px" ;
+                         width="55px">
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span><i class="fa-solid fa-bars" style="color: white;"></i></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Sản phẩm mới</a>
+
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                Loại sản phẩm
+                            </a>
+
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #1c1c50;">
+                                <li><a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="Privacy">Tất cả sản phẩm</a></li>
+                                @foreach (var x in shopDbContext.KieuSps.ToList())
+                                {
+                                    <li><a class="dropdown-item" href=" @Url.Action("Sptheokieusp", new { id = x.Id })">@x.Ten</a></li>
+                                }
+
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">Về chúng tôi</a>
+                        </li>
+                       @* <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="DangNhap">hehehe</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ShowOldValues">ShowOldValues</a>
+                        </li>*@
+                      
+
+                        @if (session.GetString("User") != null)
+                        {
+                            string userJson = session.GetString("User");
+                            User user = JsonConvert.DeserializeObject<User>(userJson);
+                            if (user.RolesId == Guid.Parse("61376099-9276-4650-8b7c-37e7d23b63aa"))
+                            {
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" href="#d" id="navbarDropdown" role="button"
+                               data-bs-toggle="dropdown" aria-expanded="false">
+                                        Mi
+                                    </a>
+                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #1c1c50;">
+                                        <li>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ShowListCtsp">Sản Phẩm</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ShowListMausac">Màu sắc</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ShowListKichCo">Kích cỡ</a>
+                                        </li>
+                                        <li>
+                                            <a class="dropdown-item" asp-area="" asp-controller="Home" asp-action="ShowListKieuSp">Phân loại</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ShowListHoaDon">quan ly hoa don</a>
+
+                                </li>
+                            }
+                        }
+
+
+
+
+                    </ul>
+                   @* <form class="d-flex" method="get" asp-action="TimKiem" asp-controller="Home">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchString">
+                        <button class="btn btn-outline-success" type="submit" id="search-btn"> Search </button>
+                    </form>*@
+                    <form class="d-flex" method="get" asp-action="TimKiem" asp-controller="Home">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searchString">
+                        <input class="form-control me-2" type="number" placeholder="Min Price" aria-label="Min Price" name="minPrice">
+                        <input class="form-control me-2" type="number" placeholder="Max Price" aria-label="Max Price" name="maxPrice">
+                        <button class="btn btn-outline-success" type="submit" id="search-btn"> Search </button>
+                    </form>
+
+                   @* <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                             
+                        <button class="btn btn-outline-success" type="submit" id="search-btn"> Search </button>
+                    </form>*@
+
+                </div>
+            </div>
+        </nav>
+        <!-- navbar -->
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- footer -->
+    @if (ViewBag.HideFooter != true)
+    {
+        <footer id="footer" style="margin-top: 50px;" @if (ViewBag.HideFooter == true) {
+    <text>style="display:none"</text>
+ }>
+                                                <div class="footer-top">
+                                                    <div class="container">
+                                                        <div class="row">
+                                                            <div class="col-lg-3 col-md-6 footer-content">
+                                                                <h3>THÔNG TIN CÔNG TY</h3><br>
+                                                                <p>NEM FASHION - THỜI TRANG CÔNG SỞ</p>
+                                                                <p>Công ty TNHH Dịch vụ và Thương mại MIN</p>
+                                                                <p>Số ĐKKD 0107861393, Sở KHĐT Tp. Hà Nội cấp ngày 04/10/2017 <br></p>
+                                                                <p>
+                                                                    <span><i class="fa fa-map-marker"></i></span> Địa chỉ: Tòa 03, ngõ 103, Phương Canh, Xuân Phương, Hà Nội <br>
+                                                                </p>
+                                                                <p>
+                                                                    <strong>
+                                                                        <i class="fas fa-phone"></i> Chăm sóc khách hàng:
+                                                                        <strong>+0000000000</strong>
+                                                                    </strong><br>
+                                                                </p>
+                                                                <p>
+                                                                    <strong>
+                                                                        <i class="fas fa-phone"></i> Mua hàng online:
+                                                                        <strong>+1111111111</strong>
+                                                                    </strong><br>
+                                                                </p>
+                                                                <p>
+                                                                    <strong><i class="fa-solid fa-envelope"></i> Email: <strong>Min@gmail.com</strong></strong>
+                                                                </p>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-6 footer-links">
+                                                                <h3>GIỚI THIỆU</h3><br>
+                                                                <ul>
+                                                                    <li><a href="#">Về chúng tôi</a></li>
+                                                                    <br>
+                                                                    <li><a href="#">Lĩnh vực hoạt động</a></li>
+                                                                    <br>
+                                                                    <li><a href="#">Hỏi đáp</a></li>
+                                                                    <br>
+                                                                    <li><a href="#">Quy chế hoạt động</a></li>
+                                                                    <br>
+                                                                    <li><a href="#">Tuyển dụng</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-6 footer-links">
+                                                                <h3>TRỢ GIÚP</h3><br>
+                                                                <ul>
+                                                                    <li><a href="#">Chính sách giao nhận - Vận chuyển</a></li>
+                                                                    <br>
+                                                                    <li><a href="#">Hướng dẫn thanh toán</a></li>
+                                                                    <br>
+                                                                    <li><a href="#">Tra cứu đơn hàng</a></li>
+                                                                    <br>
+                                                                    <li><a href="#">Quy định đổi hàng</a></li>
+                                                                    <br>
+                                                                    <li><a href="#">Quy định bảo hành và sửa chữa</a></li>
+                                                                    <br>
+                                                                    <li><a href="#">Khách hàng thân thiết</a></li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="col-lg-3 col-md-6 footer-links">
+                                                                <h3>MY SOCIAL NETWORK</h3><br>
+
+                                                                <div class="socail-links mt-3">
+                                                                    <a href="#" class="twiiter"><i class="fa-brands fa-twitter"></i></a>
+                                                                    <a href="#" class="twiiter"><i class="fa-brands fa-facebook-f"></i></a>
+                                                                    <a href="#" class="twiiter"><i class="fa-brands fa-google-plus"></i></a>
+                                                                    <a href="#" class="twiiter"><i class="fa-brands fa-instagram"></i></a>
+                                                                    <a href="#" class="twiiter"><i class="fa-brands fa-linkedin-in"></i></a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="containerpy-4">
+                                                    &copy; <strong>2023 - Bản quyền MIN</strong>
+                                                </div>
+                                        </footer>
+    }
+    <!-- footer -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

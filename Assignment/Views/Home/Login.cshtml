@@ -1,0 +1,35 @@
+﻿@model ClassLibrary1.Models.User
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<div class="container login">
+    <div class="row">
+        <div class="col-md-4" id="side1">
+            <h3>Hello Friend!</h3>
+            <p>Create New Account</p>
+            <div id="btn"><a asp-action="AddUser">Signup</a></div>
+        </div>
+        <div class="col-md-8" id="side2">
+            <h3>Login Account</h3>
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="inp">
+                    <input type="text" id="TaiKhoan" name="usernameOrEmail" class="form-control" placeholder="User Name or Gmail" required />
+                    <input type="text" id="MatKhau" name="Password" class="form-control" placeholder="Password" required />
+                </div>
+                <p>Forgot Your Password</p>
+                <div class="icons">
+                    <a asp-controller="Home" asp-action="ExternalLogin" asp-route-provider="Google">  <i class="fa-brands fa-google" style="color:black"></i></a>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-twitter"></i>
+                </div>
+                <div id="login"><button>LOG IN</button></div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+

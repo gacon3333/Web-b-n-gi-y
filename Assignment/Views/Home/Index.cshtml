@@ -1,0 +1,233 @@
+﻿@model IEnumerable<ClassLibrary1.Models.ChiTietSp>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    ViewData["Title"] = "Home Page";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<style>
+    #hehehe1:hover {
+        opacity: 0.7;
+        box-shadow: 0px 0px 10px 0px #888888;
+        cursor: pointer;
+    }</style>
+<div class="home-section">
+    <!-- home content -->
+    <section class="home">
+        <div class="content">
+            <h3>
+                Biggest Clothe Sale
+                <br> <span>Up To 50% Off</span>
+            </h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque culpa, totam sed maxime animi
+                facilis!
+            </p>
+            <button id="shopnow">Shop Now</button>
+        </div>
+        <div class="img">
+            <img src="https://lh3.googleusercontent.com/pw/AMWts8BLSuu4wH78yo7wQNyIZeSZgQGCb5siOZ_e5ECHXbeqebYg-V5lUbo66fxNdZkCTmchAzVE4_c8SxSn_s_uFqldZbQKIBlgHxx7tFn5Z5d6mZ53gL7rOx24-EpcDChYYfRXxTcoflLhVd8mnopt-FTC=w611-h408-s-no?authuser=0" alt="">
+        </div>
+    </section>
+    <!-- home content -->
+</div>
+
+<!-- top cards -->
+<div class="container" id="top-cards">
+    <div class="row">
+        <div class="col-md-4 py-3 py-md-0">
+            <div class="card" style="background-color: #a9a9a926;">
+                <img src="https://lh3.googleusercontent.com/pw/AMWts8CQlXmWAtIaDXBzwtAEf_9tsOTkqO-VQCC7znPejGDojtu_LiC7SgPHwGMgeQ-0YI3K6zFH-6XTuELw7xQjuwSo5JawAcGYHDF17i0v3kqhA8wpKBp9yKoB8i9nobugCJ1Mak2L-mXeqi8BHUciPylo=w500-h500-s-no?authuser=0" alt="">
+                <div class="card-img-overlay">
+                    <h5 class="card-titel">Mid – Top Shoes</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, ratione!</p>
+                    <p><strong>$200.30 <strike>$250.10</strike></strong></p>
+                    <button>Order Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 py-3 py-md-0">
+            <div class="card" style="background-color: #a9a9a926;">
+                <img src="https://lh3.googleusercontent.com/pw/AMWts8BXnZuxNGGCC46Cy6M0dGf2YvTz141qhtozFdne9EziY_27eAUwbL6s3KnFVjTuF2OIVjAlVFnlcwZ0tkNuNm9oe9HPQ5-LPgl40GshYwBUtxLLkR6OM8m3yOGnkRyintH50TxGED_cO6CKS4pK1M8j=w360-h360-s-no?authuser=0" alt="">
+                <div class="card-img-overlay">
+                    <h5 class="card-titel">Nike Shoes</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, ratione!</p>
+                    <p><strong>$150.10 <strike>$200.10</strike></strong></p>
+                    <button>Order Now</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 py-3 py-md-0">
+            <div class="card" style="background-color: #a9a9a926;">
+                <img src="https://lh3.googleusercontent.com/pw/AMWts8CfPQgm6HgwCWVE5jwsNZLLHeBqNi-wOA5WmBs8_oYw0Ns47Ra255XCVz5wwr5z5S8GKJyPYn5xdyzPn9Y3gxxUMbDhv4pGimTd0AyO4QOQocG_LgUYrs7d_HyGTyH7xTAFexwpv5i6DNwKiMG1mrFb=w500-h500-s-no?authuser=0" alt="">
+                <div class="card-img-overlay">
+                    <h5 class="card-titel">Giày luyện tập đa năng</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+                    <p><strong>$50.10 <strike>$60</strike></strong></p>
+                    <button>Order Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- top cards -->
+<!-- banner -->
+<div class="banner">
+    <div class="content">
+        <h1>Get Up To 50% Off</h1>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, animi?</p>
+        <div id="bannerbtn"><button>SHOP NOW</button></div>
+    </div>
+</div>
+
+
+<div class="container" id="product-cards">
+    <h1 class="text-center">PRODUCT</h1>
+    <div class="row" style="margin-top: 30px; cursor: pointer;" id="hehehe">
+        @foreach (var item in Model)
+        {
+            var x = item.GiaBan * item.SoLuongTon;
+            <div class="col-md-3 py-3 py-md-0" data-id="@item.Id" id="hehehe1">
+                <div class="card">
+                    @*<a class="nav-link" asp-area="" asp-controller="Home" asp-action="Detailsp"><img src="@Url.Content(item.LinkAnh)" alt=""></a>*@
+                    @* <img src="@Url.Content(item.LinkAnh)" alt="">*@
+                    <a href="@Url.Action("Detailsp", new { id = item.Id })">
+                        <img src="@Url.Content(item.LinkAnh)" alt="" />
+                    </a>
+                    <div class="card-body">
+                        @if(@x>10000000){
+                        <h4 style="min-height:60px; color:yellow" >@Html.DisplayFor(modelItem => item.Ten)</h4>
+                        }
+                        else{
+                        <h4 style="min-height:60px;">@Html.DisplayFor(modelItem => item.Ten)</h4>}
+                        <p>Số lượng: @Html.DisplayFor(modelItem => item.SoLuongTon)</p>
+                        <p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 210px; ">@Html.DisplayFor(modelItem => item.MoTa)</p>
+
+                        <div class="star">
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                        </div>
+                        <h5>
+                            @* $500.00 <strike></strike>*@
+                            $@Html.DisplayFor(modelItem => item.GiaBan)
+                            <span><i class="fa-solid fa-cart-shopping"></i></span>
+                        </h5>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<div class="container" id="about">
+    <h1>Về chúng tôi</h1>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-6 py-3 py-md-0">
+            <div class="card">
+                <img src="https://a.ipricegroup.com/trends-article/top-3-mau-giay-converse-duoc-cac-ngoi-sao-quoc-te-ua-chuong-medium.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-md-6 py-3 py-md-0">
+            <p>
+                Điều rất quan trọng là khách hàng phải chú ý đến quá trình adipiscing. Những người lớn tuổi đừng bao giờ
+                chùn bước trước sự khắc nghiệt của cuộc sống, mà hãy để họ được hạnh phúc, vì những người dễ dãi mà họ
+                bỏ lại phía sau sẽ sinh ra ít những người nhân hậu, và sẽ không có bất kỳ điều gì trong số này sẽ gây ra
+                cho người khác bởi vì họ không biết. Việc thực hiện cuộc sống và sự thuận tiện là dành cho kiến ​​​​trúc
+                sư! Anh trốn chạy những nhu cầu mà họ không biết, anh phê phán những lần lựa chọn, anh chấp nhận những
+                đau đớn của tâm trí kiên cường hơn? Không bao giờ, người ta nói cái khổ sẽ giải thoát cho ta, không cái
+                đau, có sự phân biệt cái đau, đúng không, nó có ràng buộc vào tâm không? Do đó, đối với những lỗi lầm
+                tương tự, kết quả là họ vui lòng chịu đựng, theo đó, để ai đó có thể đổ lỗi cho họ về nỗi đau, họ không
+                mang lại bất kỳ niềm vui lớn nào. Và họ cung cấp cho tất cả sự từ chối mà chúng tôi dẫn đầu, những người
+                tuyệt vời mang lại niềm vui cho một số người.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="about">
+    <h1>Câu chuyện của chúng tôi</h1>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-6 py-3 py-md-0">
+            <div class="card">
+                <img src="https://znews-photo.zingcdn.me/w660/Uploaded/ryksdreyxq/2021_07_22/800.jpg" alt="">
+            </div>
+        </div>
+        <div class="col-md-6 py-3 py-md-0">
+            <p>
+                Chúng tôi tin rằng vẻ đẹp của thời trang nên được tiếp cận với tất cả mọi người, không chỉ một số ít đặc
+                quyền. Khi công ty được thành lập vào năm 2012, chúng tôi nhận thấy rằng các công ty thời trang phải lựa
+                chọn giữa cung cấp sự lựa chọn hoặc giảm áp lực hàng tồn kho và lãng phí. Vì vậy, chúng tôi bắt đầu thay
+                đổi điều đó bằng cách đi đầu trong việc phát triển các quy trình và công nghệ thay thế để đưa thời trang
+                vào tương lai.
+                Khách hàng của chúng tôi là cốt lõi trong mô hình kinh doanh của chúng tôi, thúc đẩy sự phát triển của
+                chúng tôi với đội ngũ gần 10.000 nhân viên phục vụ hơn 150 quốc gia trong vòng chưa đầy một thập kỷ. Mô
+                hình ưu tiên kỹ thuật số của chúng tôi đáp ứng khách hàng ở bất kỳ đâu: trên thiết bị di động, trực
+                tuyến và trên phương tiện truyền thông xã hội. Chúng tôi đã trở thành một trong những ứng dụng mua sắm
+                phổ biến nhất và tiếp tục thu hút khách hàng bằng cách cung cấp nhiều luồng nội dung trực tiếp trong nền
+                tảng MIN và mang lại trải nghiệm mua sắm trực tuyến tốt nhất.
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="container" id="about">
+    <h1>Làm cho vẻ đẹp thời trang có thể tiếp cận được với tất cả mọi người</h1>
+    <div class="row" style="margin-top: 50px;">
+        <div class="col-md-6 py-3 py-md-0">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRtAxlpPmDZkfAZTj51U_ENo1dlJoFXP88xOg&usqp=CAU" alt="">
+            </div>
+        </div>
+        <div class="col-md-6 py-3 py-md-0">
+            <div>
+                Người tiêu dùng không còn tuân theo một tiêu chuẩn thống nhất về những gì được coi là “thời trang” hay
+                “đẹp”. Chúng tôi tin rằng trang phục chúng tôi mặc phản ánh tính cách của chúng tôi và chúng tôi muốn
+                trao quyền cho mọi người khám phá và thể hiện cá tính của họ. Để làm được điều này, MIN tạo ra nhiều lựa
+                chọn để phù hợp với bất kỳ tâm trạng hoặc dịp nào.
+            </div>
+        </div>
+    </div>
+</div>
+<a href="#" class="arrow"><i><img src="https://lh3.googleusercontent.com/pw/AMWts8DHbcDv0dmDPhlw-xaNCWEARXXkKja1POUvbdLioGLJ2W8rLQMjpl72Tho3FKl8HubdaD6Sgof64V4BeTuWYhsfSUEBdagMoS2DN4WG3mpUciCCSjOafZsR8mcROzDFAIaOL1RvNe3CYziL0Itjlhht=w512-h512-s-no?authuser=0" alt="" width="50px"></i></a>
+
+
+<script>
+    // lấy thẻ div theo id
+    var div = document.getElementById("hehehe");
+
+    // duyệt qua tất cả các phần tử con của thẻ div và gán sự kiện click cho mỗi phần tử
+    for (var i = 0; i < div.children.length; i++) {
+        div.children[i].onclick = function () {
+            var divs = document.querySelectorAll("#product-cards > .row > div");
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].addEventListener("click", function () {
+                    var id = this.getAttribute("data-id");
+                    window.location.href = "/Home/Detailsp/" + id;
+                });
+            }
+        };
+    }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

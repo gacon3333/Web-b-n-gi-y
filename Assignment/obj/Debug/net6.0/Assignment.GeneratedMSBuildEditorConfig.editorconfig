@@ -1,0 +1,149 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = Assignment
+build_property.RootNamespace = Assignment
+build_property.ProjectDir = C:\Users\thatt\OneDrive\Desktop\Assignment\Assignment\
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\thatt\OneDrive\Desktop\Assignment\Assignment
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/About.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBYm91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/AddCtsp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRDdHNwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/AddKichCo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRLaWNoQ28uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/AddKieuSp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRLaWV1U3AuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/AddMausac.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRNYXVzYWMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/AddUser.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRVc2VyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/DangNhap.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEYW5nTmhhcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/DetailsCtsp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxzQ3RzcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/DetailsHoaDon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxzSG9hRG9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/DetailsHoaDonChiTiets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxzSG9hRG9uQ2hpVGlldHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/Detailsp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhaWxzcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/ShowCartsss.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93Q2FydHNzcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/ShowDatHang.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93RGF0SGFuZy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/ShowListCtsp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93TGlzdEN0c3AuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/ShowListFromSession.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93TGlzdEZyb21TZXNzaW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/ShowListHoaDon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93TGlzdEhvYURvbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/ShowListKichCo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93TGlzdEtpY2hDby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/ShowListKieuSp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93TGlzdEtpZXVTcC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/ShowListMausac.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93TGlzdE1hdXNhYy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/ShowOldValues.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTaG93T2xkVmFsdWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/Sptheokieusp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTcHRoZW9raWV1c3AuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/TimKiem.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUaW1LaWVtLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/UpdateCtsp.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGRhdGVDdHNwLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/UpdateHoaDon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGRhdGVIb2FEb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Home/UserProfile.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVc2VyUHJvZmlsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/thatt/OneDrive/Desktop/Assignment/Assignment/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-y18fyt0aqx

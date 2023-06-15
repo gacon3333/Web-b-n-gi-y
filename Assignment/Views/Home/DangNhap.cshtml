@@ -1,0 +1,58 @@
+﻿@model ClassLibrary1.Models.User
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+<div class="container login">
+    <div class="row">       
+        <div class="col-md-8" id="side2">
+            <h3>Dang Nhap</h3>
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="inp">
+                    <input type="text" id="TaiKhoan" name="usernameOrEmail" class="form-control" placeholder="User Name" required />
+                    <input type="text" id="MatKhau" name="Password" class="form-control" placeholder="Password" required />
+                </div>               
+                <br />
+                <br />
+                <div><button id="btnDangNhap" type="button" onclick="validateForm()">DangNhap</button></div>
+                <br />
+                <br />
+            </form>
+        </div>
+    </div>
+</div>
+
+@if (TempData["AlertMessage"] != null)
+{
+    <script>
+        $(document).ready(function() {
+            $('#btnDangNhap').click(function() {
+                alert('@TempData["AlertMessage"]');
+            });
+        });
+    </script>
+}
+
+@section scripts{
+    <script>
+        function validateForm() {
+            var username = document.getElementById("TaiKhoan").value;
+            var password = document.getElementById("MatKhau").value;
+            if (username.length <= 6 || password.length <= 6) {
+                alert("Tên người dùng và mật khẩu phải dài hơn 6 kí tự.");
+            } else if (/[^a-zA-Z0-9]/.test(username) || /[^a-zA-Z0-9]/.test(password)) {
+                alert("Tên người dùng và mật khẩu chỉ được chứa chữ hoặc số.");
+            } else {
+                document.forms[0].submit();
+            }
+        }
+    </script>
+}
+
+

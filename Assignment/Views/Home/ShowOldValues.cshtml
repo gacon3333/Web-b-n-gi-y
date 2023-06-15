@@ -1,0 +1,95 @@
+﻿@model IEnumerable<ClassLibrary1.Models.ChiTietSp>
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<table class="table">
+    <thead>
+        <tr>
+           @* <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Ten)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdMauSac)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdKichCo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdKieuSp)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.BaoHanh)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.MoTa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SoLuongTon)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiaNhap)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GiaBan)
+            </th>
+           @* <th>
+                @Html.DisplayNameFor(model => model.LinkAnh)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.TrangThai)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Ten)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdMauSac)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdKichCo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdKieuSp)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.BaoHanh)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoLuongTon)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaNhap)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.GiaBan)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.LinkAnh)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.TrangThai)
+            </td>
+            <td>
+                    @Html.ActionLink("Rollback", "Rollback", new { id=item.Id})
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

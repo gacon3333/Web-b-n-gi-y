@@ -1,0 +1,114 @@
+﻿@model IEnumerable<ClassLibrary1.Models.ChiTietSp>
+
+@{
+    ViewData["Title"] = "ShowListCtsp";
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+@*<div style="overflow-x: scroll">*@
+
+
+<h1>ShowListCtsp</h1>
+
+<p>
+    <a asp-action="AddCtsp">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                Tên sản phẩm
+            </th>
+            <th>
+                Màu sắc
+            </th>
+            <th>
+                Size
+            </th>
+            <th>
+                Loại sản phẩm
+            </th>
+            <th>
+                Bảo hành
+            </th>
+            <th>
+                Mô tả
+            </th>
+            <th>
+                Số lượng tồn
+            </th>
+            <th>
+                Giá nhập
+            </th>
+            <th>
+                Giá bán
+            </th>
+            <th>
+                Ảnh
+            </th>
+            <th>
+                Trạng thái
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdMauSacNavigation.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdKichCoNavigation.Size)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdKieuSpNavigation.Ten)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BaoHanh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoTa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SoLuongTon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaNhap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaBan)
+                </td>
+                <td>
+                    <img src=" @Html.DisplayFor(modelItem => item.LinkAnh)" height="50px" ; width="50px" />
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThai)
+                </td>
+                <td>
+                    @Html.ActionLink("UpdateCtsp", "UpdateCtsp", new { id=item.Id}) |
+                    @Html.ActionLink("Details", "DetailsCtsp", new { id=item.Id}) |
+                    @Html.ActionLink("Delete", "DeleteCtsp", new { id=item.Id })
+                </td>
+               
+            </tr>
+        }
+    </tbody>
+</table>

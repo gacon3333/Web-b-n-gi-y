@@ -1,0 +1,63 @@
+﻿@model IEnumerable<ClassLibrary1.Models.ChiTietSp>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<style>
+    #hehehe1:hover {
+        opacity: 0.7;
+        box-shadow: 0px 0px 10px 0px #888888;
+        cursor: pointer;
+    }</style>
+<div class="container" id="product-cards">
+    <h1 class="text-center">PRODUCT</h1>
+    <div class="row" style="margin-top: 30px; cursor: pointer;" id="hehehe">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3 py-3 py-md-0" data-id="@item.Id" id="hehehe1">
+                <div class="card">                
+                    <a href="@Url.Action("Detailsp", new { id = item.Id })">
+                        <img src="@Url.Content(item.LinkAnh)" alt="" />
+                    </a>
+                    <div class="card-body">
+                        <h4 style="min-height:60px;">@Html.DisplayFor(modelItem => item.Ten)</h4>
+                        <p>Số lượng: @Html.DisplayFor(modelItem => item.SoLuongTon)</p>
+                        <p style="overflow: hidden;text-overflow: ellipsis;white-space: nowrap;max-width: 210px; ">@Html.DisplayFor(modelItem => item.MoTa)</p>
+
+                        <div class="star">
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                            <i class="fas fa-star checked"></i>
+                        </div>
+                        <h5>                          
+                            $@Html.DisplayFor(modelItem => item.GiaBan)
+                            <span><i class="fa-solid fa-cart-shopping"></i></span>
+                        </h5>
+
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<a href="#" class="arrow"><i><img src="https://lh3.googleusercontent.com/pw/AMWts8DHbcDv0dmDPhlw-xaNCWEARXXkKja1POUvbdLioGLJ2W8rLQMjpl72Tho3FKl8HubdaD6Sgof64V4BeTuWYhsfSUEBdagMoS2DN4WG3mpUciCCSjOafZsR8mcROzDFAIaOL1RvNe3CYziL0Itjlhht=w512-h512-s-no?authuser=0" alt="" width="50px"></i></a>
+<script>
+    var div = document.getElementById("hehehe");
+
+    for (var i = 0; i < div.children.length; i++) {
+        div.children[i].onclick = function () {
+            var divs = document.querySelectorAll("#product-cards > .row > div");
+            for (var i = 0; i < divs.length; i++) {
+                divs[i].addEventListener("click", function () {
+                    var id = this.getAttribute("data-id");
+                    window.location.href = "/Home/Detailsp/" + id;
+                });
+            }
+        };
+    }
+</script>

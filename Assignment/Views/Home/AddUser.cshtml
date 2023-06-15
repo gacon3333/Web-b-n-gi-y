@@ -1,0 +1,43 @@
+﻿@model ClassLibrary1.Models.User
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<!-- signup -->
+<div class="container login">
+    <div class="row">
+        <div class="col-md-4" id="side1">
+            <h3>Welcome Back!!</h3>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <div id="btn"><a asp-action="Login">Login</a></div>
+        </div>
+        <div class="col-md-8" id="side2">
+            <h3>Create Account</h3>
+            <form asp-action="AddUser">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="inp">
+                    <input asp-for="TaiKhoan" class="form-control" placeholder="Name" required/>
+                    <span asp-validation-for="TaiKhoan" class="text-danger"></span>
+                </div>
+                <div class="inp">
+                    <input asp-for="MatKhau" class="form-control" placeholder="MatKhau" required />
+                    <span asp-validation-for="MatKhau" class="text-danger"></span>
+                </div>
+                <div class="inp">
+                    <input asp-for="Email" class="form-control" placeholder="Email" required />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>               
+                <p>Lorem ipsum dolor sit amet.</p>
+                <div class="icons">
+                    <i class="fa-brands fa-twitter"></i>
+                    <i class="fa-brands fa-facebook-f"></i>
+                    <i class="fa-brands fa-instagram"></i>
+                </div>
+                <div id="login"><button>SIGN UP</button></div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- signup -->

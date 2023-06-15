@@ -1,0 +1,91 @@
+﻿@model ClassLibrary1.Models.ChiTietSp
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<h4>Sp</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddCtsp">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Ten" class="control-label"> Tên sản phẩm</label>
+                <input asp-for="Ten" class="form-control" />
+                <span asp-validation-for="Ten" class="text-danger"></span>
+            </div>
+
+         
+             <div class="form-group">
+                @Html.LabelFor(model => model.IdKieuSp, "Phân loại", htmlAttributes: new { @class = "control-label col-md-4"  })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.IdKieuSp, (IEnumerable<SelectListItem>)ViewData["IdKsp"], "Chọn kiểu sản phẩm", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdKieuSp, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdMauSac, "Màu sắc", htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.IdMauSac, (IEnumerable<SelectListItem>)ViewData["IdMs"], "Chọn màu sắc", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdMauSac, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.IdKichCo, "Kích cỡ", htmlAttributes: new { @class = "control-label col-md-4" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.IdKichCo, (IEnumerable<SelectListItem>)ViewData["IdKc"], "Chọn kích cỡ", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.IdKichCo, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="BaoHanh" class="control-label"> Bảo hành</label>
+                <input asp-for="BaoHanh" class="form-control" />
+                <span asp-validation-for="BaoHanh" class="text-danger"></span>
+            </div>          
+            <div class="form-group">
+                <label asp-for="MoTa" class="control-label">Mô tả</label>
+                <input asp-for="MoTa" class="form-control" />
+                <span asp-validation-for="MoTa" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="SoLuongTon" class="control-label">Số lượng</label>
+                <input asp-for="SoLuongTon" class="form-control" />
+                <span asp-validation-for="SoLuongTon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiaNhap" class="control-label">Giá nhập</label>
+                <input asp-for="GiaNhap" class="form-control" />
+                <span asp-validation-for="GiaNhap" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GiaBan" class="control-label">Giá bán</label>
+                <input asp-for="GiaBan" class="form-control" />
+                <span asp-validation-for="GiaBan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LinkAnh" class="control-label"></label>
+                <input asp-for="LinkAnh" class="form-control" />
+                <span asp-validation-for="LinkAnh" class="text-danger"></span>
+            </div>
+           
+            <div class="form-group">
+                <label asp-for="TrangThai" class="control-label">Trạng thái</label>
+                <input asp-for="TrangThai" class="form-control" />
+                <span asp-validation-for="TrangThai" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
